@@ -6,6 +6,7 @@
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.30+-FF4B4B?logo=streamlit&logoColor=white)](https://streamlit.io)
 [![FAISS](https://img.shields.io/badge/FAISS-Vector_DB-00ADD8)](https://github.com/facebookresearch/faiss)
 [![Groq](https://img.shields.io/badge/Groq-LPU_Inference-F55036)](https://groq.com)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://med-assist-ai-app.streamlit.app/)
 
 ---
 
@@ -156,18 +157,19 @@ This application is optimized for easy deployment to **Streamlit Community Cloud
 
 ### 1. Repository Setup
 Ensure the following files are tracked and committed to your Git repository (they are enabled by default in `.gitignore`):
-- `uv.lock` (for fast, pinned dependencies using `uv`)
+- `requirements.txt` (standard dependencies list — `uv.lock` is ignored to prevent build-parser failures on Streamlit Cloud)
 - `faiss_index/` (pre-built vector database assets)
 - `app/streamlit_app.py` (entry point)
 
 ### 2. Streamlit Cloud Dashboard Setup
 1. Connect your GitHub repository to [Streamlit Community Cloud](https://share.streamlit.io/).
 2. Select your branch and set the **Main file path** to `app/streamlit_app.py`.
-3. In **Advanced Settings / Secrets**, add your Groq API Key:
+3. In **Advanced Settings**, select **Python 3.10** (required for `nmslib` binary compatibility on Streamlit Cloud).
+4. In **Advanced Settings / Secrets**, add your Groq API Key:
    ```toml
    GROQ_API_KEY = "gsk_your_key_here"
    ```
-4. Click **Deploy**. Dependencies and the pre-built index will load automatically.
+5. Click **Deploy**. Dependencies and the pre-built index will load automatically.
 
 ---
 
