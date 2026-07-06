@@ -1,0 +1,27 @@
+[project]
+name = "medical-chatbot"
+version = "1.0.0"
+description = "Medical NLP Chatbot using Medical NER, Semantic Search, RAG, and LLMs"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pandas>=2.0.0",
+    "numpy>=1.24.0,<2.0.0",
+    "spacy>=3.7.0",
+    "scispacy>=0.5.4",
+    "sentence-transformers>=2.2.0",
+    "faiss-cpu>=1.7.4",
+    "groq>=0.9.0",
+    "streamlit>=1.30.0",
+    "pyyaml>=6.0",
+    "python-dotenv>=1.0.0",
+    "tqdm>=4.65.0",
+    "torch>=2.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+]

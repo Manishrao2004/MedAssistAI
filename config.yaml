@@ -1,0 +1,59 @@
+# ============================================================
+# Medical NLP Chatbot — Configuration
+# ============================================================
+
+# Dataset
+dataset:
+  raw_path: "medquad.csv"
+  cleaned_path: "data/medquad_cleaned.csv"
+
+# Text Preprocessing
+preprocessing:
+  chunk_size: 500          # characters per chunk
+  chunk_overlap: 100       # overlap between consecutive chunks
+  min_chunk_size: 50       # discard chunks shorter than this
+  spacy_model: "en_core_sci_sm"
+
+# Embeddings
+embeddings:
+  model_name: "sentence-transformers/all-MiniLM-L6-v2"
+  dimension: 384
+  batch_size: 64
+  normalize: true
+
+# FAISS Vector Store
+vector_store:
+  index_path: "faiss_index/index.faiss"
+  metadata_path: "faiss_index/metadata.pkl"
+  index_type: "flatip"     # IndexFlatIP for cosine similarity on normalized vectors
+
+# Retriever
+retriever:
+  top_k: 5
+  min_similarity: 0.25     # minimum similarity threshold
+
+# LLM
+llm:
+  provider: "groq"
+  model: "llama-3.3-70b-versatile"
+  temperature: 0.3
+  max_tokens: 1024
+
+# NER
+ner:
+  model: "en_core_sci_sm"
+  entity_categories:
+    - "DISEASE"
+    - "SYMPTOM"
+    - "DRUG"
+    - "ANATOMY"
+
+# Evaluation
+evaluation:
+  test_sample_size: 50
+  k_values: [1, 3, 5]
+
+# Logging
+logging:
+  level: "INFO"
+  log_file: "logs/chatbot.log"
